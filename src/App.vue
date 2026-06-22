@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <v-main>
-      <router-view />
+      <TabelaTodosCursos />
     </v-main>
   </v-app>
 </template>
 
-<script lang="ts" setup>
-  //
+<script setup lang="ts">
+import TabelaTodosCursos from './components/TabelaTodosCursos.vue';
 </script>
