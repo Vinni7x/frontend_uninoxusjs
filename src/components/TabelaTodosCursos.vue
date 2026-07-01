@@ -73,3 +73,31 @@ const excluirCurso = (item) => {
   console.log('Excluir:', item)
 }
 </script>
+<style>
+/* Atenção: A tag acima está sem o "scoped" de propósito! */
+
+/* 1. Estilizando o cabeçalho (Fundo azul escuro e texto branco) */
+.tabela-estilizada thead th {
+  background-color: #3f68cc !important;
+  color: white !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+
+/* 2. Linhas Pares (Azul clarinho) */
+.tabela-estilizada tbody tr:nth-child(even) td {
+  background-color: #dbe4f8 !important; 
+  border-bottom: none !important;
+}
+
+/* 3. Linhas Ímpares (Fundo mais branco) */
+.tabela-estilizada tbody tr:nth-child(odd) td {
+  background-color: #eef2fb !important;
+  border-bottom: none !important;
+}
+
+/* 4. Remove o efeito cinza de hover do Vuetify ao passar o mouse */
+.tabela-estilizada tbody tr:hover td {
+  background-color: inherit !important;
+}
+</style>

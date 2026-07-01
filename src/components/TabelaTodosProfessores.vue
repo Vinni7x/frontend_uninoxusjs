@@ -6,7 +6,27 @@
     :items-length="totalItems"
     :loading="loading"
     @update:options="loadItems"
-  ></v-data-table-server>
+    class="tabela-estilizada rounded-xl elevation-2"
+  >
+   <template v-slot:item.acoes="{ item }">
+      <v-btn 
+        color="primary" 
+        size="small" 
+        class="me-3"
+        @click="editarCurso(item)"
+      >
+        Editar
+      </v-btn>
+
+      <v-btn 
+        color="red-button" 
+        size="small" 
+        @click="excluirCurso(item)"
+      >
+        Excluir
+      </v-btn>
+    </template>
+  </v-data-table-server>
 </template>
 
 <script setup>

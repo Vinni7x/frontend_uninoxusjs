@@ -6,11 +6,12 @@
     :items-length="totalItems"
     :loading="loading"
     @update:options="loadItems"
+    class="tabela-estilizada rounded-xl elevation-2"
   >
     <template #[`item.rendimentoAcademico`]="{ value }">
       {{ value ? value.toFixed(2) : 'N/A' }}
     </template>
-    
+
     <template v-slot:item.acoes="{ item }">
       <v-btn 
         color="primary" 
