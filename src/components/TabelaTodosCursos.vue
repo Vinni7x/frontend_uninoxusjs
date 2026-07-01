@@ -6,12 +6,32 @@
     :items-length="totalItems"
     :loading="loading"
     @update:options="loadItems"
-  ></v-data-table-server>
+    class="tabela-estilizada rounded-xl elevation-2"
+  >
+    <template v-slot:item.acoes="{ item }">
+      <v-btn 
+        color="primary" 
+        size="small" 
+        class="me-3"
+        @click="editarCurso(item)"
+      >
+        Editar
+      </v-btn>
+
+      <v-btn 
+        color="red-button" 
+        size="small" 
+        @click="excluirCurso(item)"
+      >
+        Excluir
+      </v-btn>
+    </template>
+  </v-data-table-server>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { listarTodosCursos } from '@/services/cursoService' // ajuste o caminho conforme sua pasta
+import { listarTodosCursos } from '@/services/cursoService' 
 
 const itemsPerPage = ref(10)
 const serverItems = ref([])
@@ -22,19 +42,19 @@ const headers = [
   { title: 'ID', key: 'idCurso', align: 'start', sortable: true },
   { title: 'Nome Curso', key: 'nomeCurso', sortable: true },
   { title: 'Carga Horária Total', key: 'cargaHorariaTotal', sortable: true },
+  { title: 'Ações', key:'acoes',sortable: false }
 ]
 
-// Essa função é disparada automaticamente pelo Vuetify ao mudar de página ou alterar o limite por página
+
 const loadItems = async ({ page, itemsPerPage }) => {
   loading.value = true
 
   try {
-    // 🔥 page - 1 para alinhar o Vuetify (1) com o Spring (0)
     const paginaSpring = page - 1
 
     const data = await listarTodosCursos(paginaSpring, itemsPerPage)
 
-    console.log('Resposta da API:', data) // deixa esse log até confirmar o formato
+    console.log('Resposta da API:', data) 
 
     serverItems.value = data.content
     totalItems.value = data.totalElements
@@ -44,5 +64,12 @@ const loadItems = async ({ page, itemsPerPage }) => {
   } finally {
     loading.value = false
   }
+}
+const editarCurso = (item) => {
+  console.log('Editar:', item)
+}
+
+const excluirCurso = (item) => {
+  console.log('Excluir:', item)
 }
 </script>

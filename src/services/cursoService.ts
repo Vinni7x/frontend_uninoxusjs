@@ -1,18 +1,18 @@
 const API_BASE = 'http://localhost:8080'
 
-export async function fetchAluno(id: number) {
+export async function fetchCurso(id: number) {
    const r = await fetch(`${API_BASE}/cursos/${id}`);
   if (!r.ok) throw new Error('Erro ao buscar curso.');
   return r.json();
 }
 
-export async function fetchTurmas(id: number) {
+export async function fetchProfessorCurso(id: number) {
   const r = await fetch(`${API_BASE}/professores/${id}/professorcurso`);
   if (!r.ok) throw new Error('Erro ao buscar professores.');
   return r.json();
 }
 
-export async function fetchProvas(id: number) {
+export async function fetchTurmasCursos(id: number) {
     const r = await fetch(`${API_BASE}/turmas/${id}/turmascursos`);
   if (!r.ok) throw new Error('Erro ao buscar turmas.');
   return r.json();

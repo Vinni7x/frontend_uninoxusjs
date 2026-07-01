@@ -21,6 +21,7 @@ export default createVuetify({
           'blue-light':'#2d6ae0',
           'gold-light':'#f5b942',
           'table-header': '#3a6bc4',
+          'red-button':'#c0392b',
         },
       },
     },
