@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-main>
-      <TabelaTodosCursos />
+      <TabelaTodasTurmas />
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
-import TabelaTodosCursos from './components/TabelaTodosCursos.vue';
+import TabelaTodasTurmas from './components/TabelaTodasTurmas.vue';
 </script>
+

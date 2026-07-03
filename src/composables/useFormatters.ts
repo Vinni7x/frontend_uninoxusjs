@@ -13,10 +13,16 @@ export function useFormatters() {
   return `${dia}/${mes}/${ano}`;
   }
 
+  function formatarHora(hora: string): string {
+  if (!hora) return '—'
+  return hora.substring(0, 5) // "08:00:00" → "08:00"
+}
+
   function formatarTipoAvaliacao(tipo: string): string {
   const labels: Record<string, string> = { AV1:'1ª PROVA', AV2:'2ª PROVA', AV3:'3ª PROVA', REPOSICAO:'REPOSIÇÃO', FINAL:'FINAL' };
   return labels[tipo] ?? tipo;
   } 
 
-  return { formatarDias, formatarData, formatarTipoAvaliacao }
+  return { formatarDias, formatarData, formatarTipoAvaliacao, formatarHora}
+
 } 
