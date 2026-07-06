@@ -7,31 +7,52 @@
     :loading="loading"
     @update:options="loadItems"
     class="tabela-estilizada rounded-xl elevation-2"
-  >
+  > 
     <template v-slot:item.acoes="{ item }">
-      <v-btn 
-        color="primary" 
-        size="small" 
-        class="me-3"
-        @click="editarTurma(item)"
-      >
-        Editar
-      </v-btn>
+  <div class="d-flex align-center ga-2">
+    <v-btn 
+      rounded="xl" 
+      color="primary" 
+      size="small"
+      @click="editarCurso(item)"
+    >
+      Editar
+    </v-btn>
 
-      <v-btn 
-        color="red-button" 
-        size="small" 
-        @click="excluirTurma(item)"
-      >
-        Excluir
-      </v-btn>
-    </template>
+    <v-btn 
+      rounded="xl" 
+      color="red-button" 
+      size="small" 
+      @click="excluirCurso(item)"
+    >
+      Excluir
+    </v-btn>
+
+    <v-btn 
+      rounded="xl" 
+      color="gold-light"
+      size="small" 
+      @click="solicitacoesCurso(item)"
+    >
+      Matriculas
+    </v-btn>
+  </div>
+</template>
+<template v-slot:item.horarioInicio="{ item }">
+  <div class="d-flex align-center" style="white-space: nowrap;">
+    <span>{{ formatarHora(item.horarioInicio) }}</span>
+    <span class="mx-1">-</span>
+    <span>{{ formatarHora(item.horarioFinal) }}</span>
+  </div>
+</template>
   </v-data-table-server>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { listarTodasTurmas } from '@/services/turmaService' 
+import { useFormatters } from '@/composables/useFormatters'
+const { formatarHora } = useFormatters()
 
 const itemsPerPage = ref(10)
 const serverItems = ref([])
@@ -43,10 +64,10 @@ const headers = [
   { title: 'Disciplina', key: 'nomeDisicplina', sortable: true },
   { title: 'Professor', key: 'nomeProfessor', sortable: true },
   { title: 'Local', key: 'local', sortable: true },
-  { title: 'Horário', key: 'horario', sortable: false },
+  { title: 'Horário', key: 'horarioInicio', sortable: false },
   { title: 'Vagas', key: 'vagas', sortable: true },
   { title: 'Status', key: 'statusTurma', sortable: true },
-  { title: 'Ações', Key: 'acoes',sortable: false} 
+  { title: 'Ações', key: 'acoes', sortable: false, width: '260px' }
 ]
 
 
@@ -69,6 +90,7 @@ const loadItems = async ({ page, itemsPerPage }) => {
   } finally {
     loading.value = false
   }
+  
 }
 </script>
 <style>
