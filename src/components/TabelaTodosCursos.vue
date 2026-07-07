@@ -9,22 +9,25 @@
     class="tabela-estilizada rounded-xl elevation-2"
   >
     <template v-slot:item.acoes="{ item }">
+      <div class="d-flex align-center ga-2">
       <v-btn 
+        rounded="xl"
         color="primary" 
         size="small" 
-        class="me-3"
         @click="editarCurso(item)"
       >
         Editar
       </v-btn>
 
       <v-btn 
+        rounded="xl"
         color="red-button" 
         size="small" 
         @click="excluirCurso(item)"
       >
         Excluir
       </v-btn>
+      </div>
     </template>
   </v-data-table-server>
 </template>

@@ -22,20 +22,7 @@ export function useFormatters() {
   const labels: Record<string, string> = { AV1:'1ª PROVA', AV2:'2ª PROVA', AV3:'3ª PROVA', REPOSICAO:'REPOSIÇÃO', FINAL:'FINAL' };
   return labels[tipo] ?? tipo;
   } 
-  function corStatus(status) {
-  switch (status) {
-    case 'ATIVA':
-      return 'green'
-    case 'CANCELADA':
-      return 'red'
-    case 'ENCERRADA':
-      return 'grey'
-    default:
-      return 'blue-grey'
-  }
-  return status;
-}
 
-  return { formatarDias, formatarData, formatarTipoAvaliacao, formatarHora,corStatus}
+  return { formatarDias, formatarData, formatarTipoAvaliacao, formatarHora}
 
 } 
