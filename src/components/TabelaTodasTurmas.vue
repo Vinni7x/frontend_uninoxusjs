@@ -1,4 +1,16 @@
 <template>
+  <v-card-title class="d-flex w-100">
+  <v-btn 
+    class="me-auto"
+    rounded="xl"
+    color="primary" 
+    size="small" 
+    @click="adicionarTurmas(item)"
+  >
+    + Novas Turmas 
+  </v-btn>
+</v-card-title> 
+
   <v-data-table-server
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
@@ -14,7 +26,7 @@
       rounded="xl" 
       color="primary" 
       size="small"
-      @click="editarCurso(item)"
+      @click="editarTurma(item)"
     >
       Editar
     </v-btn>
@@ -23,7 +35,7 @@
       rounded="xl" 
       color="red-button" 
       size="small" 
-      @click="excluirCurso(item)"
+      @click="excluirTurma(item)"
     >
       Excluir
     </v-btn>
@@ -32,7 +44,7 @@
       rounded="xl" 
       color="gold-light"
       size="small" 
-      @click="solicitacoesCurso(item)"
+      @click="solicitacoesMatricula(item)"
     >
       Matriculas
     </v-btn>

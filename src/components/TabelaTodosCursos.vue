@@ -1,4 +1,17 @@
 <template>
+  
+   <v-card-title class="d-flex w-100">
+  <v-btn 
+    class="me-auto"
+    rounded="xl"
+    color="primary" 
+    size="small" 
+    @click="adicionarCursos(item)"
+  >
+    + Novos Cursos 
+  </v-btn>
+</v-card-title> 
+
   <v-data-table-server
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
@@ -30,6 +43,7 @@
       </div>
     </template>
   </v-data-table-server>
+  
 </template>
 
 <script setup>

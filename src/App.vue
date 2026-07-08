@@ -8,9 +8,9 @@
           <v-tabs v-model="tab">
             <v-tab value="turmas" text="Turmas"></v-tab>
             <v-tab value="cursos" text="Cursos"></v-tab>
-            <v-tab value="alunos" text="Disciplina"></v-tab>
-            <v-tab value="tab3" text="Alunos"></v-tab>
-            <v-tab value="tab3" text="Professores"></v-tab>
+            <v-tab value="alunos" text="Alunos"></v-tab>
+            <v-tab value="disciplinas" text="Disciplina"></v-tab>
+            <v-tab value="professores" text="Professores"></v-tab>
           </v-tabs>
         </template>
       </v-toolbar>
@@ -30,6 +30,14 @@
             <TabelaTodosAlunos />
           </v-tabs-window-item>
 
+          <v-tabs-window-item value="disciplinas">
+            <TabelaTodasDisciplinas />
+          </v-tabs-window-item>
+
+          <v-tabs-window-item value="professores">
+            <TabelaTodosProfessores />
+          </v-tabs-window-item>
+
         </v-tabs-window>
       </v-container>
 
@@ -43,7 +51,10 @@ import HeaderAdmin from './components/HeaderAdmin.vue';
 import TabelaTodasTurmas from './components/TabelaTodasTurmas.vue';
 import TabelaTodosCursos from './components/TabelaTodosCursos.vue';
 import TabelaTodosAlunos from './components/TabelaTodosAlunos.vue';
+import TabelaTodasDisciplinas from './components/TabelaTodasDisciplinas.vue';
+import TabelaTodosProfessores from './components/TabelaTodosProfessores.vue';
 
-// Variável reativa para controlar qual aba está ativa
+
 const tab = ref('turmas');
+
 </script>

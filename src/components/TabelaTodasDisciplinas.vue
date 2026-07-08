@@ -1,4 +1,16 @@
 <template>
+  <v-card-title class="d-flex w-100">
+  <v-btn 
+    class="me-auto"
+    rounded="xl"
+    color="primary" 
+    size="small" 
+    @click="adicionarDisciplina(item)"
+  >
+    + Novas Disciplinas 
+  </v-btn>
+</v-card-title> 
+
   <v-data-table-server
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
@@ -9,22 +21,25 @@
     class="tabela-estilizada rounded-xl elevation-2"
   >
     <template v-slot:item.acoes="{ item }">
-      <v-btn 
-        color="primary" 
-        size="small" 
-        class="me-3"
-        @click="editarCurso(item)"
-      >
-        Editar
-      </v-btn>
+  <div class="d-flex align-center ga-2">
+    <v-btn 
+      rounded="xl" 
+      color="primary" 
+      size="small"
+      @click="editarDisciplina(item)"
+    >
+      Editar
+    </v-btn>
 
-      <v-btn 
-        color="red-button" 
-        size="small" 
-        @click="excluirCurso(item)"
-      >
-        Excluir
-      </v-btn>
+    <v-btn 
+      rounded="xl" 
+      color="red-button" 
+      size="small" 
+      @click="excluirDisciplina(item)"
+    >
+      Excluir
+    </v-btn>
+  </div>
     </template>
   </v-data-table-server>
 </template>
@@ -66,11 +81,11 @@ const loadItems = async ({ page, itemsPerPage }) => {
     loading.value = false
   }
 }
-const editarCurso = (item) => {
+const editarDisciplina = (item) => {
   console.log('Editar:', item)
 }
 
-const excluirCurso = (item) => {
+const excluirDisciplina = (item) => {
   console.log('Excluir:', item)
 }
 </script>

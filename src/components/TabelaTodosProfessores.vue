@@ -1,4 +1,16 @@
 <template>
+  <v-card-title class="d-flex w-100">
+  <v-btn 
+    class="me-auto"
+    rounded="xl"
+    color="primary" 
+    size="small" 
+    @click="adicionarProfessores(item)"
+  >
+    + Novos Professores
+  </v-btn>
+</v-card-title> 
+
   <v-data-table-server
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
@@ -9,22 +21,25 @@
     class="tabela-estilizada rounded-xl elevation-2"
   >
    <template v-slot:item.acoes="{ item }">
-      <v-btn 
-        color="primary" 
-        size="small" 
-        class="me-3"
-        @click="editarCurso(item)"
-      >
-        Editar
-      </v-btn>
+       <div class="d-flex align-center ga-2">
+    <v-btn 
+      rounded="xl" 
+      color="primary" 
+      size="small"
+      @click="editarProfessores(item)"
+    >
+      Editar
+    </v-btn>
 
-      <v-btn 
-        color="red-button" 
-        size="small" 
-        @click="excluirCurso(item)"
-      >
-        Excluir
-      </v-btn>
+    <v-btn 
+      rounded="xl" 
+      color="red-button" 
+      size="small" 
+      @click="excluirProfessores(item)"
+    >
+      Excluir
+    </v-btn>
+  </div>
     </template>
   </v-data-table-server>
 </template>
@@ -43,7 +58,7 @@ const headers = [
   { title: 'Nome do Professor', key: 'nomePessoa', sortable: true },
   { title: 'CPF', key: 'cpf', sortable: true },
   { title: 'Curso', key: 'nomeCurso', sortable: true },
-  {title: 'Ações', Key: 'ações-btn',sortable: false }
+  { title: 'Ações', key: 'acoes', sortable: false, width: '260px' }
 
 ]
 

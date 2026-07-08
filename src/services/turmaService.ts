@@ -28,8 +28,8 @@ export async function fetchTurmasMatriculadas(matriculaAluno: number) {
 }
 
 // ─── ADMIN - MATRÍCULAS DA TURMA ──────────────────────────
-export async function fetchMatriculasPendentes(idTurma: number) {
-  const r = await fetch(`${API_BASE}/matriculas/${idTurma}/pendentes`)
+export async function fetchMatriculasPendentes(idTurma: number, pagina: number, itens: number) {
+  const r = await fetch(`${API_BASE}/alunos/${idTurma}/solicitacaoalunos?pagina=${pagina}&itens=${itens}`)
   if (!r.ok) throw new Error('Erro ao buscar matrículas pendentes.')
   return r.json()
 }
